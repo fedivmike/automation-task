@@ -6,6 +6,11 @@ import {
   relativePathsToImages,
 } from '../src/testData/inputData';
 import path from 'path';
+import { 
+  NO_AVATAR_UPLOADED, 
+  PLEASE_FILL_OUT_THIS_FIELD, 
+  SUCCESS, 
+  SUCCESSFUL_FORM_SUBMISSIONS } from '../src/constants';
 
 test('Verify that user is able to submit a form with valid data', async ({ applicationFormPage, successPage }) => {
   const data: InputTestData = {
@@ -21,12 +26,12 @@ test('Verify that user is able to submit a form with valid data', async ({ appli
   const actualData = await successPage.getData();
   const actualUrl = successPage.getURL();
 
-  expect(actualHeader).toContain('Successful Form Submissions');
+  expect(actualHeader).toContain(SUCCESSFUL_FORM_SUBMISSIONS);
   expect(actualData).toContain(data.firstName);
   expect(actualData).toContain(data.lastName);
   expect(actualData).toContain(data.email);
-  expect(actualData).toContain('No Avatar Uploaded');
-  expect(actualUrl).toContain('/success');
+  expect(actualData).toContain(NO_AVATAR_UPLOADED);
+  expect(actualUrl).toContain(SUCCESS);
 });
 
 for (const dataSet of invalidTestsData) {
@@ -67,7 +72,7 @@ test('Verify that submission fails when email format is invalid and validation m
   expect(actualValidationMessage).toContain('Please');
 
   const actualPageUrl = applicationFormPage.getURL();
-  expect(actualPageUrl).not.toContain('success');
+  expect(actualPageUrl).not.toContain(SUCCESS);
 });
 
 for (const pathAsString of relativePathsToImages) {
@@ -104,5 +109,5 @@ test('Verify that validation message appears when required field is not filled d
       return input.validationMessage;
     });
 
-  expect(actualValidationMessage).toEqual('Please fill out this field.');
+  expect(actualValidationMessage).toEqual(PLEASE_FILL_OUT_THIS_FIELD);
 });

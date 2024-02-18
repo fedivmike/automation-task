@@ -1,4 +1,5 @@
 import path from 'path';
+import { SUCCESS } from '../constants';
 
 export type InputTestData = {
     firstName: string;
@@ -33,7 +34,7 @@ export const invalidTestsData: TestData[] = [
             isSliderUnlocked: true,
         },
         expectedTestData: {
-            notToContainUrl: '/success',
+            notToContainUrl: SUCCESS,
             errorMessage: 'Passwords do not match!',
         },
     },
@@ -47,7 +48,7 @@ export const invalidTestsData: TestData[] = [
             isSliderUnlocked: true,
         },
         expectedTestData: {
-            notToContainUrl: '/success',
+            notToContainUrl: SUCCESS,
             errorMessage: 'Password must be at least 8 characters long!',
         },
     },
@@ -62,7 +63,7 @@ export const invalidTestsData: TestData[] = [
             isSliderUnlocked: false,
         },
         expectedTestData: {
-            notToContainUrl: '/success',
+            notToContainUrl: SUCCESS,
             errorMessage: 'Please solve the captcha!',
         },
     },
@@ -78,7 +79,7 @@ export const invalidTestsData: TestData[] = [
             pathToFile: path.join(__dirname, '..\\testData\\invalid-size.gif'),
         },
         expectedTestData: {
-            notToContainUrl: '/success',
+            notToContainUrl: SUCCESS,
             errorMessage: 'File size must be less than 2 MB.',
         },
     },
