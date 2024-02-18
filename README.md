@@ -18,6 +18,6 @@
  - run **`npm run test-headed`** command to execute all tests in sequential order
  - run **`npm run test-parallel`** command to execute tests in parallel
 
-## Show exuction results
+## Show exucution results
  - On fail report opens automatically
  - on demand - run **`npm run report`** command 
