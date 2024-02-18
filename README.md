@@ -15,6 +15,9 @@
 ```bash
 npm install
 ```
+```bash
+npx playwright install
+```
 ## Run tests in UI mode and in sequential order
 ```bash
 npm run test-headed
